@@ -1,1 +1,1 @@
-"# A star visualizer" 
+# A star visualizer
