@@ -41,16 +41,14 @@ class Square {
   draw() {
     // Choose right color based on status of square
     var color = 51
-    if(this.visited) {
-      color = 'red'
-    } else if(this.inFrontier) {
-      color = '#44d13f'
-    } else if(this.inFocus) {
-      color = '#3f70d1'
-    } else if (this.start) {
+    if (this.start) {
       color = '#169209'
-    } else if(this.end) {
+    } else if (this.end) {
       color = '#FF4533'
+    } else if (this.inFrontier) {
+      color = '#44d13f'
+    } else if (this.inFocus) {
+      color = '#3f70d1'
     }
 
     fill(color)
@@ -61,16 +59,16 @@ class Square {
 
     // Draw walls
     stroke(150)
-    if(this.lwall) {
+    if (this.lwall) {
       line(this.x, this.y, this.x, this.y + this.width)
     }
-    if(this.rwall) {
+    if (this.rwall) {
       line(this.x + this.width, this.y, this.x + this.width, this.y + this.width)
     }
-    if(this.uwall) {
+    if (this.uwall) {
       line(this.x, this.y, this.x + this.width, this.y)
     }
-    if(this.dwall) {
+    if (this.dwall) {
       line(this.x, this.y + this.width, this.x + this.width, this.y + this.width)
     }
     noStroke()

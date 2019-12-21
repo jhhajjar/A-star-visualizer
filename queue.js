@@ -9,11 +9,12 @@ class Queue {
     if(this.isEmpty()) {
       this.items = [item]
     } else {
-      var ref = 0
-      while(this.items[ref].fScore < item.fScore) {
-        ref ++
+      var i = 0
+      for(i = 0; i < this.items.length; i++) {
+        if(this.items[i].fScore > item.fScore)
+          break
       }
-      this.items.splice(ref, 0, item)
+      this.items.splice(i, 0, item)
     }
   }
 

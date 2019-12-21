@@ -1,5 +1,5 @@
 
-const width = 50
+const squareWidth = 40
 var openSet
 var grid = []
 var startingSquare
@@ -7,11 +7,11 @@ var endSquare
 var done
 
 function setup() {
-  createCanvas(displayWidth, displayHeight)
-  for(var i = 0; i < displayWidth - width; i += width) {
+  createCanvas(1250, 650)
+  for(var i = 0; i < width - squareWidth; i += squareWidth) {
     grid[i] = []
-    for(var j = 0; j < displayHeight - width; j += width) {
-      grid[i][j] = new Square(i, j, width)
+    for(var j = 0; j < height - squareWidth; j += squareWidth) {
+      grid[i][j] = new Square(i, j, squareWidth)
     }
   }
 
@@ -32,8 +32,8 @@ function setup() {
 }
 
 function draw() {
-  for(var i = 0; i < displayWidth - width; i += width) {
-    for(var j = 0; j < displayHeight - width; j += width) {
+  for(var i = 0; i < width - squareWidth; i += squareWidth) {
+    for(var j = 0; j < height - squareWidth; j += squareWidth) {
       grid[i][j].draw()
     }
   }
@@ -135,7 +135,7 @@ function breakWall(s1, s2) {
 
 // Function to ensure that picking a square with (x,y) coordinates exists
 function inRange(x, y) {
-  return (x >= 0 && x < displayWidth - width) && (y >= 0 && y < displayHeight - width)
+  return (x >= 0 && x < width - squareWidth) && (y >= 0 && y < height - squareWidth)
 }
 
 // Gets neighbors for A star search
@@ -146,17 +146,17 @@ function getNeighborsA(square) {
   var y = square.y
 
   // Get correct neighbors
-  if(inRange(x-width,y) && !square.lwall) {
-    neighbors.push(grid[x-width][y])
+  if(inRange(x-squareWidth,y) && !square.lwall) {
+    neighbors.push(grid[x-squareWidth][y])
   }
-  if(inRange(x+width,y) && !square.rwall) {
-    neighbors.push(grid[x+width][y])
+  if(inRange(x+squareWidth,y) && !square.rwall) {
+    neighbors.push(grid[x+squareWidth][y])
   }
-  if(inRange(x,y-width) && !square.uwall) {
-    neighbors.push(grid[x][y-width])
+  if(inRange(x,y-squareWidth) && !square.uwall) {
+    neighbors.push(grid[x][y-squareWidth])
   }
-  if(inRange(x,y+width) && !square.dwall) {
-    neighbors.push(grid[x][y+width])
+  if(inRange(x,y+squareWidth) && !square.dwall) {
+    neighbors.push(grid[x][y+squareWidth])
   }
 
   return neighbors
@@ -177,17 +177,17 @@ function getNeighborsDFS(square, visited) {
 
   // Check for neighbors and add if they have not been visited
   var neighbors = []
-  if(inRange(x-width,y) && !visited.has(grid[x-width][y])) {
-    neighbors.push(grid[x-width][y])
+  if(inRange(x-squareWidth,y) && !visited.has(grid[x-squareWidth][y])) {
+    neighbors.push(grid[x-squareWidth][y])
   }
-  if(inRange(x+width,y) && !visited.has(grid[x+width][y])) {
-    neighbors.push(grid[x+width][y])
+  if(inRange(x+squareWidth,y) && !visited.has(grid[x+squareWidth][y])) {
+    neighbors.push(grid[x+squareWidth][y])
   }
-  if(inRange(x,y-width) && !visited.has(grid[x][y-width])) {
-    neighbors.push(grid[x][y-width])
+  if(inRange(x,y-squareWidth) && !visited.has(grid[x][y-squareWidth])) {
+    neighbors.push(grid[x][y-squareWidth])
   }
-  if(inRange(x,y+width) && !visited.has(grid[x][y+width])) {
-    neighbors.push(grid[x][y+width])
+  if(inRange(x,y+squareWidth) && !visited.has(grid[x][y+squareWidth])) {
+    neighbors.push(grid[x][y+squareWidth])
   }
 
   return neighbors
