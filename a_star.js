@@ -1,10 +1,11 @@
 
 function fullAStar() {
-  while(true && !done) {
+  while(!done) {
     aStarLoop()
   }
 }
 
+// The main loop in the A star algorithm
 function aStarLoop() {
   if(!openSet.isEmpty() && !done) {
     // Get the node with the lowest fscore
@@ -73,4 +74,15 @@ function getNeighborsA(square) {
   }
 
   return neighbors
+}
+
+
+// Heuristic function to guide the search
+function heuristic(s1, s2) {
+  var x1 = s1.x,
+    y1 = s1.y
+  var x2 = s2.x,
+    y2 = s2.y
+
+  return Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2)
 }
