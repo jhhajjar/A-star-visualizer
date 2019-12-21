@@ -1,6 +1,6 @@
 class Square {
   // Basic constructor, given (x,y) of left corner of square
-  constructor(x, y) {
+  constructor(x, y, width) {
     this.x = x
     this.y = y
     this.width = width
@@ -8,6 +8,9 @@ class Square {
     this.rwall = true
     this.uwall = true
     this.dwall = true
+    this.parent = null
+    this.gScore = Infinity
+    this.fScore = Infinity
 
     this.inFocus = false
     this.inFrontier = false
@@ -37,13 +40,13 @@ class Square {
 
   draw() {
     // Choose right color based on status of square
-    var color = 'blue'
+    var color = 51
     if(this.visited) {
       color = 'red'
     } else if(this.inFrontier) {
-      color = 'green'
+      color = '#44d13f'
     } else if(this.inFocus) {
-      color = 'yellow'
+      color = '#3f70d1'
     } else if (this.start) {
       color = '#169209'
     } else if(this.end) {
