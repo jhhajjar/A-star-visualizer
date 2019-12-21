@@ -66,6 +66,7 @@ class Square {
       line(this.x, this.y + this.width, this.x + this.width, this.y + this.width)
     }
     noStroke()
+
   }
 
   tostr() {

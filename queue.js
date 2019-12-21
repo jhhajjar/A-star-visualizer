@@ -1,7 +1,6 @@
 class Queue {
   constructor() {
     this.items = []
-    console.log(this.items);
   }
 
   // Add item to queue

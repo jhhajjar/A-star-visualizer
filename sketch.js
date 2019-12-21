@@ -1,6 +1,6 @@
-const squareWidth = 60
+var squareWidth = 35
 var openSet
-var grid = []
+var grid
 var startingSquare
 var endSquare
 var done
@@ -8,6 +8,7 @@ var begin
 
 function setup() {
   createCanvas(windowWidth, windowHeight)
+  grid = []
   for (var i = 0; i < width - squareWidth; i += squareWidth) {
     grid[i] = []
     for (var j = 0; j < height - squareWidth; j += squareWidth) {
@@ -53,5 +54,16 @@ function inRange(x, y) {
 }
 
 function keyPressed() {
-  begin = !begin
+
+  if (key == 'k') {
+    begin = !begin
+  } else if (key == 'r') {
+    begin = false
+    setup()
+  } else if (isFinite(key) && key > 0) {
+    begin = false
+    squareWidth = key * 10
+    setup()
+  }
+
 }
