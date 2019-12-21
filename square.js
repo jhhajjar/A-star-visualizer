@@ -14,39 +14,32 @@ class Square {
 
     this.inFocus = false
     this.inFrontier = false
-    this.visited = false
+    this.inPath = false
   }
 
-  // Set the square in frontier (not in focus yet and not visited yet)
+  // Set the square in frontier (not in focus yet)
   setInFrontier() {
-    this.visited = false
     this.inFocus = false
     this.inFrontier = true
   }
 
-  // Set the square in focus (no longer in frontier and not visited yet)
+  // Set the square in focus (no longer in frontier)
   setInFocus() {
     this.inFrontier = false
-    this.visited = false
     this.inFocus = true
-  }
-
-  // Set the square as visited (no longer in focus or in frontier)
-  setVisited() {
-    this.inFocus = false
-    this.inFrontier = false
-    this.visited = true
   }
 
   draw() {
     // Choose right color based on status of square
-    var color = 51
+    var color = 21
     if (this.start) {
       color = '#169209'
     } else if (this.end) {
       color = '#FF4533'
+    } else if (this.inPath){
+      color = '#bd6f46'
     } else if (this.inFrontier) {
-      color = '#44d13f'
+      color = '#cfc540'
     } else if (this.inFocus) {
       color = '#3f70d1'
     }
@@ -59,6 +52,7 @@ class Square {
 
     // Draw walls
     stroke(150)
+    strokeWeight(3)
     if (this.lwall) {
       line(this.x, this.y, this.x, this.y + this.width)
     }
