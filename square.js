@@ -41,7 +41,7 @@ class Square {
     } else if (this.inFrontier) {
       color = '#cfc540'
     } else if (this.inFocus) {
-      color = '#3f70d1'
+      color = '#3f70d2'
     }
 
     fill(color)

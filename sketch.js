@@ -44,7 +44,7 @@ function draw() {
 
   // Do A star search
   if (begin) {
-    aStarLoop()
+    aStarLoop(true)
   }
 }
 
@@ -60,6 +60,9 @@ function keyPressed() {
   } else if (key == 'r') {
     begin = false
     setup()
+  } else if (key == 's') {
+    begin = false
+    fullAStar()
   } else if (isFinite(key) && key > 0) {
     begin = false
     squareWidth = key * 10

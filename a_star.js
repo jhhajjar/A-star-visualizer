@@ -1,18 +1,19 @@
-
 function fullAStar() {
-  while(!done) {
-    aStarLoop()
+  while (!done) {
+    aStarLoop(false)
   }
 }
 
 // The main loop in the A star algorithm
-function aStarLoop() {
-  if(!openSet.isEmpty() && !done) {
+function aStarLoop(animate) {
+  if (!openSet.isEmpty() && !done) {
     // Get the node with the lowest fscore
     var current = openSet.pop()
-    current.setInFocus()
+    if (animate) {
+      current.setInFocus()
+    }
     // Check for equality
-    if(current === endSquare) {
+    if (current === endSquare) {
       console.log("DONE!")
       backtrack(endSquare)
       // parent = endSquare
@@ -23,14 +24,16 @@ function aStarLoop() {
         tentativeG = current.gScore + 1 // All edges have weight 1
 
         // If we have found a better path, record it
-        if(tentativeG < neighbor.gScore) {
+        if (tentativeG < neighbor.gScore) {
           neighbor.parent = current
           neighbor.gScore = tentativeG
           neighbor.fScore = neighbor.gScore + heuristic(neighbor, endSquare)
 
           // Add neighbor if we haven't seen, else update set
-          if(!openSet.has(neighbor)) {
-            neighbor.setInFrontier()
+          if (!openSet.has(neighbor)) {
+            if (animate) {
+              neighbor.setInFrontier()
+            }
             openSet.push(neighbor)
           } else {
             openSet._siftDown()
@@ -45,7 +48,7 @@ function aStarLoop() {
 // Function to backtrack from ending node to find path
 function backtrack(square) {
   parent = square
-  while(parent != null) {
+  while (parent != null) {
     parent.inPath = true
     parent = parent.parent
   }
@@ -60,17 +63,17 @@ function getNeighborsA(square) {
   var y = square.y
 
   // Get correct neighbors
-  if(inRange(x-squareWidth,y) && !square.lwall) {
-    neighbors.push(grid[x-squareWidth][y])
+  if (inRange(x - squareWidth, y) && !square.lwall) {
+    neighbors.push(grid[x - squareWidth][y])
   }
-  if(inRange(x+squareWidth,y) && !square.rwall) {
-    neighbors.push(grid[x+squareWidth][y])
+  if (inRange(x + squareWidth, y) && !square.rwall) {
+    neighbors.push(grid[x + squareWidth][y])
   }
-  if(inRange(x,y-squareWidth) && !square.uwall) {
-    neighbors.push(grid[x][y-squareWidth])
+  if (inRange(x, y - squareWidth) && !square.uwall) {
+    neighbors.push(grid[x][y - squareWidth])
   }
-  if(inRange(x,y+squareWidth) && !square.dwall) {
-    neighbors.push(grid[x][y+squareWidth])
+  if (inRange(x, y + squareWidth) && !square.dwall) {
+    neighbors.push(grid[x][y + squareWidth])
   }
 
   return neighbors
