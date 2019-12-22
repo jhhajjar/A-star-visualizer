@@ -7,7 +7,7 @@ var done
 var begin
 
 function setup() {
-  createCanvas(windowWidth, windowHeight)
+  createCanvas(windowWidth *9/10, windowHeight*9/10)
   grid = []
   for (var i = 0; i < width - squareWidth; i += squareWidth) {
     grid[i] = []
@@ -42,7 +42,7 @@ function draw() {
     }
   }
 
-  // Do A star search
+  // Do A star search with animation
   if (begin) {
     aStarLoop(true)
   }
@@ -53,20 +53,21 @@ function inRange(x, y) {
   return (x >= 0 && x < width - squareWidth) && (y >= 0 && y < height - squareWidth)
 }
 
+// Function to handle key events
 function keyPressed() {
 
+  // Corresponds to 'play'
   if (key == 'k') {
     begin = !begin
-  } else if (key == 'r') {
+  } else if (key == 'n') {  // Corresponds to 'new'
     begin = false
     setup()
-  } else if (key == 's') {
+  } else if (key == 's') {  // Corresponds to 'solve'
     begin = false
     fullAStar()
-  } else if (isFinite(key) && key > 0) {
+  } else if (isFinite(key) && key > 0) {  // Corresponds to difficulty
     begin = false
     squareWidth = key * 10
     setup()
   }
-
 }

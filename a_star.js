@@ -1,3 +1,4 @@
+// Full A* algorithm, doesn't animate
 function fullAStar() {
   while (!done) {
     aStarLoop(false)
@@ -29,14 +30,12 @@ function aStarLoop(animate) {
           neighbor.gScore = tentativeG
           neighbor.fScore = neighbor.gScore + heuristic(neighbor, endSquare)
 
-          // Add neighbor if we haven't seen, else update set
+          // Add neighbor if we haven't seen
           if (!openSet.has(neighbor)) {
             if (animate) {
               neighbor.setInFrontier()
             }
             openSet.push(neighbor)
-          } else {
-            openSet._siftDown()
           }
         }
       }

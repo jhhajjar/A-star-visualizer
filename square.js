@@ -52,7 +52,7 @@ class Square {
 
     // Draw walls
     stroke(150)
-    strokeWeight(3)
+    strokeWeight(2)
     if (this.lwall) {
       line(this.x, this.y, this.x, this.y + this.width)
     }
