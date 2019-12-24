@@ -7,11 +7,11 @@ var done
 var begin
 
 function setup() {
-  createCanvas(windowWidth *9/10, windowHeight*9/10)
+  createCanvas(windowWidth * 9 / 10, windowHeight * 9 / 10)
   grid = []
-  for (var i = 0; i < width - squareWidth; i += squareWidth) {
+  for (var i = 0; i < width/squareWidth - 1; i++) {
     grid[i] = []
-    for (var j = 0; j < height - squareWidth; j += squareWidth) {
+    for (var j = 0; j < height/squareWidth - 1; j++) {
       grid[i][j] = new Square(i, j, squareWidth)
     }
   }
@@ -36,9 +36,9 @@ function setup() {
 }
 
 function draw() {
-  for (var i = 0; i < width - squareWidth; i += squareWidth) {
-    for (var j = 0; j < height - squareWidth; j += squareWidth) {
-      grid[i][j].draw()
+  for (row of grid) {
+    for (square of row) {
+      square.draw()
     }
   }
 
@@ -50,7 +50,7 @@ function draw() {
 
 // Function to ensure that picking a square with (x,y) coordinates exists
 function inRange(x, y) {
-  return (x >= 0 && x < width - squareWidth) && (y >= 0 && y < height - squareWidth)
+  return (x >= 0 && x < grid.length) && (y >= 0 && y < grid[0].length)
 }
 
 // Function to handle key events
@@ -59,13 +59,13 @@ function keyPressed() {
   // Corresponds to 'play'
   if (key == 'k') {
     begin = !begin
-  } else if (key == 'n') {  // Corresponds to 'new'
+  } else if (key == 'n') { // Corresponds to 'new'
     begin = false
     setup()
-  } else if (key == 's') {  // Corresponds to 'solve'
+  } else if (key == 's') { // Corresponds to 'solve'
     begin = false
     fullAStar()
-  } else if (isFinite(key) && key > 0) {  // Corresponds to difficulty
+  } else if (isFinite(key) && key > 0) { // Corresponds to difficulty
     begin = false
     squareWidth = key * 10
     setup()

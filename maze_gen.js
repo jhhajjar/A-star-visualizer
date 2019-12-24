@@ -66,17 +66,17 @@ function getNeighborsDFS(square, visited) {
 
   // Check for neighbors and add if they have not been visited
   var neighbors = []
-  if(inRange(x-squareWidth,y) && !visited.has(grid[x-squareWidth][y])) {
-    neighbors.push(grid[x-squareWidth][y])
+  if(inRange(x-1,y) && !visited.has(grid[x-1][y])) {
+    neighbors.push(grid[x-1][y])
   }
-  if(inRange(x+squareWidth,y) && !visited.has(grid[x+squareWidth][y])) {
-    neighbors.push(grid[x+squareWidth][y])
+  if(inRange(x+1,y) && !visited.has(grid[x+1][y])) {
+    neighbors.push(grid[x+1][y])
   }
-  if(inRange(x,y-squareWidth) && !visited.has(grid[x][y-squareWidth])) {
-    neighbors.push(grid[x][y-squareWidth])
+  if(inRange(x,y-1) && !visited.has(grid[x][y-1])) {
+    neighbors.push(grid[x][y-1])
   }
-  if(inRange(x,y+squareWidth) && !visited.has(grid[x][y+squareWidth])) {
-    neighbors.push(grid[x][y+squareWidth])
+  if(inRange(x,y+1) && !visited.has(grid[x][y+1])) {
+    neighbors.push(grid[x][y+1])
   }
 
   return neighbors

@@ -1,13 +1,16 @@
+var nodesVisited = 0
 // Full A* algorithm, doesn't animate
 function fullAStar() {
   while (!done) {
     aStarLoop(false)
   }
+  console.log(nodesVisited);
 }
 
 // The main loop in the A star algorithm
 function aStarLoop(animate) {
   if (!openSet.isEmpty() && !done) {
+    nodesVisited++
     // Get the node with the lowest fscore
     var current = openSet.pop()
     if (animate) {
@@ -62,17 +65,17 @@ function getNeighborsA(square) {
   var y = square.y
 
   // Get correct neighbors
-  if (inRange(x - squareWidth, y) && !square.lwall) {
-    neighbors.push(grid[x - squareWidth][y])
+  if (inRange(x - 1, y) && !square.lwall) {
+    neighbors.push(grid[x - 1][y])
   }
-  if (inRange(x + squareWidth, y) && !square.rwall) {
-    neighbors.push(grid[x + squareWidth][y])
+  if (inRange(x + 1, y) && !square.rwall) {
+    neighbors.push(grid[x + 1][y])
   }
-  if (inRange(x, y - squareWidth) && !square.uwall) {
-    neighbors.push(grid[x][y - squareWidth])
+  if (inRange(x, y - 1) && !square.uwall) {
+    neighbors.push(grid[x][y - 1])
   }
-  if (inRange(x, y + squareWidth) && !square.dwall) {
-    neighbors.push(grid[x][y + squareWidth])
+  if (inRange(x, y + 1) && !square.dwall) {
+    neighbors.push(grid[x][y + 1])
   }
 
   return neighbors

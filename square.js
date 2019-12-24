@@ -4,6 +4,8 @@ class Square {
     this.x = x
     this.y = y
     this.width = width
+    this.dx = this.x * this.width // x coordinate for drawing
+    this.dy = this.y * this.width // y coordinate for drawing
     this.lwall = true
     this.rwall = true
     this.uwall = true
@@ -29,6 +31,13 @@ class Square {
     this.inFocus = true
   }
 
+  // Reset the square
+  reset() {
+    this.inFocus = false
+    this.inFrontier = false
+    this.inPath = false
+  }
+
   draw() {
     // Choose right color based on status of square
     var color = 21
@@ -38,6 +47,7 @@ class Square {
       color = '#FF4533'
     } else if (this.inPath){
       color = '#bd6f46'
+      color = '#b82124'
     } else if (this.inFrontier) {
       color = '#cfc540'
     } else if (this.inFocus) {
@@ -48,22 +58,22 @@ class Square {
 
     // Draw the square
     noStroke()
-    rect(this.x, this.y, this.width, this.width)
+    rect(this.dx, this.dy, this.width, this.width)
 
     // Draw walls
     stroke(150)
     strokeWeight(2)
     if (this.lwall) {
-      line(this.x, this.y, this.x, this.y + this.width)
+      line(this.dx, this.dy, this.dx, this.dy + this.width)
     }
     if (this.rwall) {
-      line(this.x + this.width, this.y, this.x + this.width, this.y + this.width)
+      line(this.dx + this.width, this.dy, this.dx + this.width, this.dy + this.width)
     }
     if (this.uwall) {
-      line(this.x, this.y, this.x + this.width, this.y)
+      line(this.dx, this.dy, this.dx + this.width, this.dy)
     }
     if (this.dwall) {
-      line(this.x, this.y + this.width, this.x + this.width, this.y + this.width)
+      line(this.dx, this.dy + this.width, this.dx + this.width, this.dy + this.width)
     }
     noStroke()
 
