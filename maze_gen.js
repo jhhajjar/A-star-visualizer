@@ -32,7 +32,6 @@ function mazeDFS(startingSquare) {
     }
     currSquare.inFocus = false
   }
-
 }
 
 // Breaks the wall between two squares
@@ -80,4 +79,16 @@ function getNeighborsDFS(square, visited) {
   }
 
   return neighbors
+}
+
+// Function to reset the maze
+function reset() {
+  for (row of grid) {
+    for (square of row) {
+      square.reset()
+    }
+  }
+  openSet.empty()
+  openSet.push(startingSquare)
+  startingSquare.gScore = 0
 }

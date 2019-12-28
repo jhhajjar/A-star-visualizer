@@ -62,7 +62,7 @@ class Square {
 
     // Draw walls
     stroke(150)
-    strokeWeight(2)
+    strokeWeight(3)
     if (this.lwall) {
       line(this.dx, this.dy, this.dx, this.dy + this.width)
     }
@@ -77,6 +77,15 @@ class Square {
     }
     noStroke()
 
+  }
+
+  reset() {
+    this.parent = null
+    this.gScore = Infinity
+    this.fScore = Infinity
+    this.inFocus = false
+    this.inPath = false
+    this.inFrontier = false
   }
 
   tostr() {

@@ -4,7 +4,6 @@ function fullAStar() {
   while (!done) {
     aStarLoop(false)
   }
-  console.log(nodesVisited);
 }
 
 // The main loop in the A star algorithm
@@ -39,13 +38,14 @@ function aStarLoop(animate) {
               neighbor.setInFrontier()
             }
             openSet.push(neighbor)
+          } else {
+            openSet._siftDown()
           }
         }
       }
     }
   }
 }
-
 
 // Function to backtrack from ending node to find path
 function backtrack(square) {
@@ -55,7 +55,6 @@ function backtrack(square) {
     parent = parent.parent
   }
 }
-
 
 // Gets neighbors for A star search
 function getNeighborsA(square) {
@@ -80,7 +79,6 @@ function getNeighborsA(square) {
 
   return neighbors
 }
-
 
 // Heuristic function to guide the search
 function heuristic(s1, s2) {

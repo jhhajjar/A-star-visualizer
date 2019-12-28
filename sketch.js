@@ -9,9 +9,9 @@ var begin
 function setup() {
   createCanvas(windowWidth * 9 / 10, windowHeight * 9 / 10)
   grid = []
-  for (var i = 0; i < width/squareWidth - 1; i++) {
+  for (var i = 0; i < width / squareWidth - 1; i++) {
     grid[i] = []
-    for (var j = 0; j < height/squareWidth - 1; j++) {
+    for (var j = 0; j < height / squareWidth - 1; j++) {
       grid[i][j] = new Square(i, j, squareWidth)
     }
   }
@@ -65,6 +65,10 @@ function keyPressed() {
   } else if (key == 's') { // Corresponds to 'solve'
     begin = false
     fullAStar()
+  } else if (key == 'r') { // Corresponds to 'reset'
+    begin = false
+    done = false
+    reset()
   } else if (isFinite(key) && key > 0) { // Corresponds to difficulty
     begin = false
     squareWidth = key * 10

@@ -44,6 +44,11 @@ class Queue {
     return this.items.length == 0
   }
 
+  // Function to empty the queue
+  empty() {
+    this.items = []
+  }
+
   // Simple print function
   toStr() {
     if(this.isEmpty()) {
@@ -56,3 +61,17 @@ class Queue {
   }
 
 }
+
+var queue = new Queue()
+console.log(queue);
+console.log(queue.isEmpty());
+queue.push(1)
+queue.push(2)
+queue.push(3)
+queue.push(4)
+queue.push(5)
+console.log(queue);
+console.log(queue.isEmpty());
+queue.empty()
+console.log(queue);
+console.log(queue.isEmpty());
