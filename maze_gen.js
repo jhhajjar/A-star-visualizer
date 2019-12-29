@@ -6,7 +6,7 @@ function mazeDFS(startingSquare) {
   toVisit.add(startingSquare)
 
   // Main loop
-  while(!toVisit.isEmpty()) {
+  while (!toVisit.isEmpty()) {
     // Get current square and mark as visited
     var currSquare = toVisit.pop()
     visited.add(currSquare)
@@ -16,7 +16,7 @@ function mazeDFS(startingSquare) {
     var neighbors = getNeighborsDFS(currSquare, visited)
 
     // If the cell has neighbors which have not been visited
-    if(neighbors.length > 0) {
+    if (neighbors.length > 0) {
       // Push current cell to stack
       toVisit.add(currSquare)
       currSquare.setInFrontier()
@@ -32,12 +32,26 @@ function mazeDFS(startingSquare) {
     }
     currSquare.inFocus = false
   }
+  randomize()
+}
+
+function randomize() {
+  for (var i = 1; i < grid.length - 1; i++) {
+    var rand = Math.random()
+    if (rand < 0.5) {
+      var y = Math.floor(Math.random() * (grid[i].length - 2)) + 1
+      breakWall(grid[i][y], grid[i - 1][y])
+      breakWall(grid[i][y], grid[i + 1][y])
+      breakWall(grid[i][y], grid[i][y + 1])
+      breakWall(grid[i][y], grid[i][y - 1])
+    }
+  }
 }
 
 // Breaks the wall between two squares
 function breakWall(s1, s2) {
   // s1 | s2
-  if(s1.x < s2.x && s1.y == s2.y) {
+  if (s1.x < s2.x && s1.y == s2.y) {
     s1.rwall = false
     s2.lwall = false
   }
@@ -65,17 +79,17 @@ function getNeighborsDFS(square, visited) {
 
   // Check for neighbors and add if they have not been visited
   var neighbors = []
-  if(inRange(x-1,y) && !visited.has(grid[x-1][y])) {
-    neighbors.push(grid[x-1][y])
+  if (inRange(x - 1, y) && !visited.has(grid[x - 1][y])) {
+    neighbors.push(grid[x - 1][y])
   }
-  if(inRange(x+1,y) && !visited.has(grid[x+1][y])) {
-    neighbors.push(grid[x+1][y])
+  if (inRange(x + 1, y) && !visited.has(grid[x + 1][y])) {
+    neighbors.push(grid[x + 1][y])
   }
-  if(inRange(x,y-1) && !visited.has(grid[x][y-1])) {
-    neighbors.push(grid[x][y-1])
+  if (inRange(x, y - 1) && !visited.has(grid[x][y - 1])) {
+    neighbors.push(grid[x][y - 1])
   }
-  if(inRange(x,y+1) && !visited.has(grid[x][y+1])) {
-    neighbors.push(grid[x][y+1])
+  if (inRange(x, y + 1) && !visited.has(grid[x][y + 1])) {
+    neighbors.push(grid[x][y + 1])
   }
 
   return neighbors

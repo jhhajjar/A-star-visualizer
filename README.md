@@ -20,5 +20,5 @@ The program uses a DFS recursive backtracker to generate the maze. This method o
 All of the maze generation code can be found in the `maze_gen.js` file.
 
 #### Path finding
-The program uses A* search to find the shortest path from the starting square (top left corner) to the end square (bottom right corner). In order to animate the search, the main loop of the A star algorithm is written as a separate function, replacing the while loop with a simple `if` statement, and this function is run in the `draw` function of p5js which runs continuously, achieving the same effect of a while loop.
+The program uses A* search to find the shortest path from the starting square (top left corner) to the end square (bottom right corner). In order to animate the search, the main loop of the A star algorithm is written as a separate function, replacing the while loop with a simple `if` statement, and this function is run in the `draw` function of p5js which runs continuously, achieving the same effect of a while loop. The heuristic used for A* is the Euclidian distance of the square in question and the end square
 All of the A* code can be found in the `a_star.js` file.

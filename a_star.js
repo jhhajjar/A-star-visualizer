@@ -19,7 +19,6 @@ function aStarLoop(animate) {
     if (current === endSquare) {
       console.log("DONE!")
       backtrack(endSquare)
-      // parent = endSquare
       done = true
     } else {
       // Loop through neighbors
@@ -39,7 +38,9 @@ function aStarLoop(animate) {
             }
             openSet.push(neighbor)
           } else {
-            openSet._siftDown()
+            // Update the priority of neighbor in the queue
+            openSet.remove(neighbor)
+            openSet.push(neighbor)
           }
         }
       }

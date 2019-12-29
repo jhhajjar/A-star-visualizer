@@ -5,12 +5,12 @@ class Queue {
 
   // Add item to queue
   push(item) {
-    if(this.isEmpty()) {
+    if (this.isEmpty()) {
       this.items = [item]
     } else {
       var i = 0
-      for(i = 0; i < this.items.length; i++) {
-        if(this.items[i].fScore > item.fScore)
+      for (i = 0; i < this.items.length; i++) {
+        if (this.items[i].fScore > item.fScore)
           break
       }
       this.items.splice(i, 0, item)
@@ -19,11 +19,11 @@ class Queue {
 
   // Returns true if item is in the queue, else false
   has(item) {
-    if(this.isEmpty()) {
+    if (this.isEmpty()) {
       return false
     } else {
-      for(var i = 0; i < this.items.length; i++) {
-        if(this.items[i] === item) {
+      for (var i = 0; i < this.items.length; i++) {
+        if (this.items[i] === item) {
           return true
         }
       }
@@ -33,10 +33,21 @@ class Queue {
 
   // Get next item from queue
   pop() {
-    if(this.isEmpty()) {
+    if (this.isEmpty()) {
       return null
     }
     return this.items.shift()
+  }
+
+  // Removes only a specific item
+  remove(item) {
+    var i = 0
+    for (i = 0; i < this.items.length; i++) {
+      if (this.items[i] === item) {
+        break
+      }
+    }
+    this.items.splice(i, 1)
   }
 
   // Determine if the queue is empty
@@ -51,27 +62,13 @@ class Queue {
 
   // Simple print function
   toStr() {
-    if(this.isEmpty()) {
+    if (this.isEmpty()) {
       return "Empty"
     }
     var str = ""
-    for(var i = 0; i < this.items.length; i++)
+    for (var i = 0; i < this.items.length; i++)
       str += this.items[i] + " "
     return str
   }
 
 }
-
-var queue = new Queue()
-console.log(queue);
-console.log(queue.isEmpty());
-queue.push(1)
-queue.push(2)
-queue.push(3)
-queue.push(4)
-queue.push(5)
-console.log(queue);
-console.log(queue.isEmpty());
-queue.empty()
-console.log(queue);
-console.log(queue.isEmpty());
