@@ -38,7 +38,7 @@ function mazeDFS(startingSquare) {
 function randomize() {
   for (var i = 1; i < grid.length - 1; i++) {
     var rand = Math.random()
-    if (rand < 0.5) {
+    if (rand < 0.3) {
       var y = Math.floor(Math.random() * (grid[i].length - 2)) + 1
       breakWall(grid[i][y], grid[i - 1][y])
       breakWall(grid[i][y], grid[i + 1][y])

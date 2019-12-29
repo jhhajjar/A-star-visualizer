@@ -2,6 +2,21 @@ html, body {
   height: 100%;
 }
 
+#canvas {
+  float:left;
+}
+
+#info {
+  float: center;
+  clear: left;
+  display: flex;
+  justify-content: center;
+}
+
+p {
+  margin: auto;
+}
+
 body {
   margin: 0;
   display: flex;

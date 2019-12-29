@@ -1,4 +1,4 @@
-var squareWidth = 35
+var squareWidth = 15
 var openSet
 var grid
 var startingSquare
@@ -7,7 +7,8 @@ var done
 var begin
 
 function setup() {
-  createCanvas(windowWidth * 9 / 10, windowHeight * 9 / 10)
+  var canvas = createCanvas(windowWidth * 9 / 10, windowHeight * 9 / 10)
+  canvas.parent("canvas")
   grid = []
   for (var i = 0; i < width / squareWidth - 1; i++) {
     grid[i] = []
@@ -27,6 +28,8 @@ function setup() {
   endSquare.end = true
 
   // Setup for A*
+  nodesVisited = 0
+  pathLength = 0
   openSet.push(startingSquare)
   startingSquare.gScore = 0
   done = false
@@ -71,7 +74,14 @@ function keyPressed() {
     reset()
   } else if (isFinite(key) && key > 0) { // Corresponds to difficulty
     begin = false
-    squareWidth = key * 10
+    var val = key
+    if(key < 3) {
+      console.log(val);
+      val += 5
+      val/=10
+      console.log(val);
+    }
+    squareWidth = val * 10
     setup()
   }
 }

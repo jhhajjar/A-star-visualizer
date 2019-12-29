@@ -1,4 +1,4 @@
-var nodesVisited = 0
+
 // Full A* algorithm, doesn't animate
 function fullAStar() {
   while (!done) {
@@ -9,9 +9,9 @@ function fullAStar() {
 // The main loop in the A star algorithm
 function aStarLoop(animate) {
   if (!openSet.isEmpty() && !done) {
-    nodesVisited++
     // Get the node with the lowest fscore
     var current = openSet.pop()
+    current.visited = true
     if (animate) {
       current.setInFocus()
     }
@@ -32,7 +32,7 @@ function aStarLoop(animate) {
           neighbor.fScore = neighbor.gScore + heuristic(neighbor, endSquare)
 
           // Add neighbor if we haven't seen
-          if (!openSet.has(neighbor)) {
+          if (!openSet.has(neighbor) && !neighbor.visited) {
             if (animate) {
               neighbor.setInFrontier()
             }
