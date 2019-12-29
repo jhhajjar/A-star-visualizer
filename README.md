@@ -5,9 +5,13 @@ The purpose of this program is to visualize the A* pathfinding algorithm. In ord
 [Download info]
 #### Key presses
 `r`: resets the maze
+
 `s`: solves the maze without animation, draws the shortest path
+
 `k`: pause/play for solving the maze with animation
+
 `n`: generates new maze
+
 `1-9`: generates a maze at a different difficulty, `1` being the hardest, `9` being the easiest
 
 ## Topics explored
