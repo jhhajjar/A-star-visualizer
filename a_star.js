@@ -11,7 +11,6 @@ function aStarLoop(animate) {
   if (!openSet.isEmpty() && !done) {
     // Get the node with the lowest fscore
     var current = openSet.pop()
-    current.visited = true
     if (animate) {
       current.setInFocus()
       squaresThatChanged.push(current)
@@ -33,7 +32,7 @@ function aStarLoop(animate) {
           neighbor.fScore = neighbor.gScore + heuristic(neighbor, endSquare)
 
           // Add neighbor if we haven't seen
-          if (!openSet.has(neighbor) && !neighbor.visited) {
+          if (!openSet.has(neighbor)) {
             if (animate) {
               neighbor.setInFrontier()
               squaresThatChanged.push(neighbor)

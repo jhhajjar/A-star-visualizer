@@ -66,7 +66,7 @@ class Square {
     stroke(150)
     if(squareWidth < 15) {
       strokeWeight(1)
-    } else if(squareWidth < 20) {
+    } else if(squareWidth < 25) {
       strokeWeight(2)
     } else {
       strokeWeight(3)

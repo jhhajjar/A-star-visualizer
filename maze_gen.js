@@ -100,6 +100,7 @@ function reset() {
   for (row of grid) {
     for (square of row) {
       square.reset()
+      squaresThatChanged.push(square)
     }
   }
   openSet.empty()
