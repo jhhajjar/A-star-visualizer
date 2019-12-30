@@ -39,16 +39,13 @@ function setup() {
 }
 
 function draw() {
-  // for (row of grid) {
-  //   for (square of row) {
-  //     square.draw()
-  //   }
-  // }
 
+  // Only draw squares that changed
   for (square of squaresThatChanged) {
     square.draw()
   }
 
+  // Clear squares that changed, will be updated in A* loop
   squaresThatChanged = []
 
   // Do A star search with animation
