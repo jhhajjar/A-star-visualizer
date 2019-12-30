@@ -1,19 +1,22 @@
-var squareWidth = 15
+var squareWidth = 25
 var openSet
 var grid
 var startingSquare
 var endSquare
 var done
 var begin
+var squaresThatChanged
 
 function setup() {
   var canvas = createCanvas(windowWidth * 9 / 10, windowHeight * 9 / 10)
   canvas.parent("canvas")
   grid = []
+  squaresThatChanged = []
   for (var i = 0; i < width / squareWidth - 1; i++) {
     grid[i] = []
     for (var j = 0; j < height / squareWidth - 1; j++) {
       grid[i][j] = new Square(i, j, squareWidth)
+      squaresThatChanged.push(grid[i][j])
     }
   }
 
@@ -33,17 +36,20 @@ function setup() {
   openSet.push(startingSquare)
   startingSquare.gScore = 0
   done = false
-
-  // Do A*
-  // fullAStar()
 }
 
 function draw() {
-  for (row of grid) {
-    for (square of row) {
-      square.draw()
-    }
+  // for (row of grid) {
+  //   for (square of row) {
+  //     square.draw()
+  //   }
+  // }
+
+  for (square of squaresThatChanged) {
+    square.draw()
   }
+
+  squaresThatChanged = []
 
   // Do A star search with animation
   if (begin) {
@@ -74,14 +80,7 @@ function keyPressed() {
     reset()
   } else if (isFinite(key) && key > 0) { // Corresponds to difficulty
     begin = false
-    var val = key
-    if(key < 3) {
-      console.log(val);
-      val += 5
-      val/=10
-      console.log(val);
-    }
-    squareWidth = val * 10
+    squareWidth = key * 5
     setup()
   }
 }

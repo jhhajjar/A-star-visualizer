@@ -14,6 +14,7 @@ function aStarLoop(animate) {
     current.visited = true
     if (animate) {
       current.setInFocus()
+      squaresThatChanged.push(current)
     }
     // Check for equality
     if (current === endSquare) {
@@ -35,6 +36,7 @@ function aStarLoop(animate) {
           if (!openSet.has(neighbor) && !neighbor.visited) {
             if (animate) {
               neighbor.setInFrontier()
+              squaresThatChanged.push(neighbor)
             }
             openSet.push(neighbor)
           } else {
@@ -52,6 +54,7 @@ function aStarLoop(animate) {
 function backtrack(square) {
   parent = square
   while (parent != null) {
+    squaresThatChanged.push(parent)
     parent.inPath = true
     parent = parent.parent
   }

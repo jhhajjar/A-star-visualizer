@@ -64,7 +64,13 @@ class Square {
 
     // Draw walls
     stroke(150)
-    strokeWeight(3)
+    if(squareWidth < 15) {
+      strokeWeight(1)
+    } else if(squareWidth < 20) {
+      strokeWeight(2)
+    } else {
+      strokeWeight(3)
+    }
     if (this.lwall) {
       line(this.dx, this.dy, this.dx, this.dy + this.width)
     }
