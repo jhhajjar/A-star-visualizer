@@ -2,7 +2,12 @@
 The purpose of this program is to visualize the A* pathfinding algorithm. In order to make the visualization more interesting and fun to look at, the program generates a maze and runs the algorithm through the maze.
 
 ## Usage
-[Download info]
+In order to use the project:
+
+1. Clone the repository
+2. Copy the file location of the `index.html` file
+3. Paste the link into a browser
+
 #### Key presses
 `r`: resets the maze
 
