@@ -1,4 +1,3 @@
-
 // Full A* algorithm, doesn't animate
 function fullAStar() {
   while (!done) {
@@ -29,7 +28,13 @@ function aStarLoop(animate) {
         if (tentativeG < neighbor.gScore) {
           neighbor.parent = current
           neighbor.gScore = tentativeG
+          // if (greedy) {
+          //   neighbor.fScore = heuristic(neighbor, endSquare)
+          // } else if (bread) {
+          //   neighbor.fScore = neighbor.gScore
+          // } else {
           neighbor.fScore = neighbor.gScore + heuristic(neighbor, endSquare)
+          // }
 
           // Add neighbor if we haven't seen
           if (!openSet.has(neighbor)) {
@@ -90,5 +95,5 @@ function heuristic(s1, s2) {
   var x2 = s2.x,
     y2 = s2.y
 
-  return Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2)
+  return dist(x1,y1,x2,y2)//abs(x1 - x2) + abs(y1 - y2)
 }

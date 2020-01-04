@@ -6,6 +6,7 @@ var endSquare
 var done
 var begin
 var squaresThatChanged
+var bread, greedy
 
 function setup() {
   var canvas = createCanvas(windowWidth * 9 / 10, windowHeight * 9 / 10)
@@ -79,5 +80,17 @@ function keyPressed() {
     begin = false
     squareWidth = key * 5
     setup()
+  // } else if (key == 'b') {
+  //   bread = true
+  //   greedy = false
+  //   begin = true
+  // } else if (key == 'g') {
+  //   greedy = true
+  //   bread = false
+  //   begin = true
+  // } else if (key == 'a') {
+  //   greedy = false
+  //   bread = false
+  //   begin = true
   }
 }

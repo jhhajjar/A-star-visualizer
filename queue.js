@@ -43,7 +43,7 @@ class Queue {
   remove(item) {
     var i = 0
     for (i = 0; i < this.items.length; i++) {
-      if (this.items[i] === item) {
+      if (this.items[i] === item){//.x === item.x && this.items[i].y === item.y) {
         break
       }
     }
