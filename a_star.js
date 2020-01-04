@@ -95,5 +95,5 @@ function heuristic(s1, s2) {
   var x2 = s2.x,
     y2 = s2.y
 
-  return dist(x1,y1,x2,y2)//abs(x1 - x2) + abs(y1 - y2)
+  return abs(x1 - x2) + abs(y1 - y2)
 }
