@@ -4,6 +4,7 @@ html, body {
 
 #canvas {
   float:left;
+  padding-top: 2rem;
 }
 
 #info {
@@ -13,6 +14,15 @@ html, body {
   justify-content: center;
 }
 
+.jumbotron {
+  padding-bottom: 2rem;
+  background-color: #d8a48f;
+}
+
+.btn-secondary {
+  background-color: #8b8f64;
+}
+
 p {
   margin: auto;
 }
@@ -20,6 +30,7 @@ p {
 body {
   margin: 0;
   display: flex;
+  background-color: #353C51;
 
   /* This centers our sketch horizontally. */
   justify-content: center;

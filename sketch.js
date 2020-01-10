@@ -1,16 +1,22 @@
 var squareWidth = 25
+var r = 0.8
 var openSet
 var grid
 var startingSquare
 var endSquare
-var done
-var begin
 var squaresThatChanged
-var bread, greedy
+var a_star = true, bread, greedy, begin, done
 
 function setup() {
-  var canvas = createCanvas(windowWidth * 9 / 10, windowHeight * 9 / 10)
+  var canvas = createCanvas(windowWidth * r, windowHeight * r)
   canvas.parent("canvas")
+
+  // Initialize variables
+  begin = false
+  done = false
+  greedy = false
+  bread = false
+
   grid = []
   squaresThatChanged = []
   for (var i = 0; i < width / squareWidth - 1; i++) {
@@ -36,7 +42,6 @@ function setup() {
   pathLength = 0
   openSet.push(startingSquare)
   startingSquare.gScore = 0
-  done = false
 }
 
 function draw() {
@@ -51,7 +56,7 @@ function draw() {
 
   // Do A star search with animation
   if (begin) {
-    aStarLoop(true)
+    pathFindingLoop(true)
   }
 }
 
@@ -67,30 +72,13 @@ function keyPressed() {
   if (key == 'k') {
     begin = !begin
   } else if (key == 'n') { // Corresponds to 'new'
-    begin = false
     setup()
   } else if (key == 's') { // Corresponds to 'solve'
-    begin = false
-    fullAStar()
+    solveMaze()
   } else if (key == 'r') { // Corresponds to 'reset'
-    begin = false
-    done = false
     reset()
   } else if (isFinite(key) && key > 0) { // Corresponds to difficulty
-    begin = false
     squareWidth = key * 5
     setup()
-  // } else if (key == 'b') {
-  //   bread = true
-  //   greedy = false
-  //   begin = true
-  // } else if (key == 'g') {
-  //   greedy = true
-  //   bread = false
-  //   begin = true
-  // } else if (key == 'a') {
-  //   greedy = false
-  //   bread = false
-  //   begin = true
   }
 }

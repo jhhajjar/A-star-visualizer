@@ -1,3 +1,5 @@
+// Handles all functions for maze generation
+
 // Maze generation function
 function mazeDFS(startingSquare) {
   // Data structures we will need
@@ -35,6 +37,7 @@ function mazeDFS(startingSquare) {
   randomize()
 }
 
+// Randomly pick a square to break all walls to create loops and more forks
 function randomize() {
   for (var i = 1; i < grid.length - 1; i++) {
     var rand = Math.random()
@@ -93,17 +96,4 @@ function getNeighborsDFS(square, visited) {
   }
 
   return neighbors
-}
-
-// Function to reset the maze
-function reset() {
-  for (row of grid) {
-    for (square of row) {
-      square.reset()
-      squaresThatChanged.push(square)
-    }
-  }
-  openSet.empty()
-  openSet.push(startingSquare)
-  startingSquare.gScore = 0
 }

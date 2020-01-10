@@ -1,12 +1,14 @@
 // Full A* algorithm, doesn't animate
-function fullAStar() {
+function solveMaze() {
   while (!done) {
-    aStarLoop(false)
+    pathFindingLoop(false)
   }
+  begin = false
+  done = true
 }
 
-// The main loop in the A star algorithm
-function aStarLoop(animate) {
+// The main loop in the Path finding algorithm
+function pathFindingLoop(animate) {
   if (!openSet.isEmpty() && !done) {
     // Get the node with the lowest fscore
     var current = openSet.pop()
@@ -14,7 +16,7 @@ function aStarLoop(animate) {
       current.setInFocus()
       squaresThatChanged.push(current)
     }
-    // Check for equality
+    // Check if we are done
     if (current === endSquare) {
       console.log("DONE!")
       backtrack(endSquare)
@@ -28,13 +30,13 @@ function aStarLoop(animate) {
         if (tentativeG < neighbor.gScore) {
           neighbor.parent = current
           neighbor.gScore = tentativeG
-          // if (greedy) {
-          //   neighbor.fScore = heuristic(neighbor, endSquare)
-          // } else if (bread) {
-          //   neighbor.fScore = neighbor.gScore
-          // } else {
-          neighbor.fScore = neighbor.gScore + heuristic(neighbor, endSquare)
-          // }
+          if (greedy) {
+            neighbor.fScore = heuristic(neighbor, endSquare)
+          } else if (bread) {
+            neighbor.fScore = neighbor.gScore
+          } else if (a_star) {
+            neighbor.fScore = neighbor.gScore + heuristic(neighbor, endSquare)
+          }
 
           // Add neighbor if we haven't seen
           if (!openSet.has(neighbor)) {

@@ -4,7 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Star Algorithm Visualizer</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="my.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
   <script type="text/javascript" src="http://livejs.com/live.js"></script>
@@ -13,13 +17,36 @@
   <script src="square.js" charset="utf-8"></script>
   <script src="maze_gen.js" charset="utf-8"></script>
   <script src="a_star.js" charset="utf-8"></script>
+  <script src="states.js" charset="utf-8"></script>
   <script src="sketch.js"></script>
+  <title>A Star Algorithm Visualizer</title>
 </head>
 
 <body>
   <div id="container">
+    <div class="jumbotron">
+      <h1 class="header text-center">Maze-Solving Visualizer</h1>
+    </div>
+    <div class="container">
+      <div class="wrapper text-center">
+        <div class="btn-group btn-group-toggle text-center" data-toggle="buttons">
+          <label class="btn btn-secondary active" id="a_star_button">
+            <input type="radio" autocomplete="off"> A* Search
+          </label>
+          <label class="btn btn-secondary" id="BFS_button">
+            <input type="radio" autocomplete="off"> Breadth First Search
+          </label>
+          <label class="btn btn-secondary" id="greedy_button">
+            <input type="radio" autocomplete="off"> Best First Search
+          </label>
+        </div>
+      </div>
+
+    </div>
     <!-- This is the canvas, who would have thought -->
-    <div id="canvas"></div>
+    <div class="container">
+      <div id="canvas"></div>
+    </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
