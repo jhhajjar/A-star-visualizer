@@ -5,7 +5,7 @@ var grid
 var startingSquare
 var endSquare
 var squaresThatChanged
-var a_star = true, bread, greedy, begin, done
+var a_star = true, bread = false, greedy = false, begin, done
 
 function setup() {
   var canvas = createCanvas(windowWidth * r, windowHeight * r)
@@ -14,8 +14,6 @@ function setup() {
   // Initialize variables
   begin = false
   done = false
-  greedy = false
-  bread = false
 
   grid = []
   squaresThatChanged = []
